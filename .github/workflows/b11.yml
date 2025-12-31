@@ -74,14 +74,17 @@ jobs:
 
       - name: Setup kubectl
         uses: azure/setup-kubectl@v4
+        with:
+          version: 'latest'
 
-      - name: test kubectl connection
-        run: |
-          kubectl get nodes
 
       - name: Update kubeconfig for EKS
         run: |
           aws eks update-kubeconfig --region ap-south-1 --name ${{ secrets.EKS_CLUSTER_NAME }}
+
+      - name: test kubectl connection
+        run: |
+          kubectl get nodes
 
       - name: Update deployment image to new ECR image
         run: |
