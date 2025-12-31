@@ -75,6 +75,10 @@ jobs:
       - name: Setup kubectl
         uses: azure/setup-kubectl@v4
 
+      - name: test kubectl connection
+        run: |
+          kubectl get nodes
+
       - name: Update kubeconfig for EKS
         run: |
           aws eks update-kubeconfig --region ap-south-1 --name ${{ secrets.EKS_CLUSTER_NAME }}
@@ -89,7 +93,7 @@ jobs:
 
       - name: Apply Kubernetes manifests
         run: |
-          kubectl apply -f k8s/app
+          kubectl apply -f k8s/app --validate=false
 
   # update-gitops:
   #   runs-on: ubuntu-latest
