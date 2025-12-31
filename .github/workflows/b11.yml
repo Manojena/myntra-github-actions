@@ -73,7 +73,7 @@ jobs:
           aws-region: ap-south-1
 
       - name: Setup kubectl
-        uses: actions/setup-kubectl@v4
+        uses: azure/setup-kubectl@v4
 
       - name: Update kubeconfig for EKS
         run: |
