@@ -66,10 +66,6 @@ jobs:
         with:
           version: 'latest'
 
-      - name: Update kubeconfig for EKS
-        run: |
-          aws eks update-kubeconfig --region ap-south-1 --name ${{ secrets.EKS_CLUSTER_NAME }}
-
       - name: Test kubectl connection
         run: |
           kubectl get nodes
