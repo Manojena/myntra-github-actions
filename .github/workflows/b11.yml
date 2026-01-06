@@ -66,9 +66,6 @@ jobs:
         with:
           version: 'latest'
 
-      - name: Test kubectl connection
-        run: |
-          kubectl get nodes
 
       - name: Update deployment image to new ECR image
         run: |
