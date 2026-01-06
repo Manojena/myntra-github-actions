@@ -40,11 +40,10 @@ jobs:
 
       - name: Verify image in ECR
         run: |
-          echo "Checking if image exists in ECR..."
           aws ecr describe-images \
-            --repository-name myntra \
-            --image-ids imageTag=${{ github.sha }} \
-            --region ap-south-1 \
+          --repository-name b12 \
+          --image-ids imageTag=${{ github.sha }} \
+          --region ap-south-1
           && echo "✅ Image exists in ECR" \
           || (echo "❌ Image not found in ECR" && exit 1)
 
